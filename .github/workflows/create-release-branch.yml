@@ -46,6 +46,6 @@ jobs:
           {
             echo "## Release ${{ steps.version.outputs.branch }}"
             echo ""
-            echo "- 🔨 [Watch the build](https://dev.azure.com/<ORG>/<PROJECT>/_build?definitionId=<BUILD_DEF_ID>&branchName=refs/heads/${{ steps.version.outputs.branch }})"
-            echo "- 🚀 Once the build finishes, the deployment release is auto-created here: [Releases](https://dev.azure.com/<ORG>/<PROJECT>/_release?definitionId=<RELEASE_DEF_ID>&view=mine&_a=releases)"
+            echo "- 🔨 [Watch the build](https://dev.azure.com/<ORG>/<PROJECT>/_build) — the latest run for \`${{ steps.version.outputs.branch }}\` will be at the top"
+            echo "- 🚀 Once the build finishes, the deployment release is auto-created here: [Releases](https://dev.azure.com/<ORG>/<PROJECT>/_release) — the latest one will be at the top"
           } >> "$GITHUB_STEP_SUMMARY"
