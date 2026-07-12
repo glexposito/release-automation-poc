@@ -1,4 +1,4 @@
-name: Create release branch from minor
+name: Open team release
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   create-release-branch:
-    name: Create release branch
+    name: Open team release
     runs-on: ubuntu-26.04
 
     steps:
