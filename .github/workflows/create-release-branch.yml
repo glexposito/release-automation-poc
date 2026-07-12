@@ -3,7 +3,7 @@ name: Create release branch from minor
 on:
   push:
     branches:
-      - team/develop
+      - minor
 
   workflow_dispatch:
 
@@ -34,3 +34,12 @@ jobs:
 
       - name: Create release branch
         run: git push origin HEAD:refs/heads/${{ steps.version.outputs.branch }}
+
+      - name: Post ADO links
+        run: |
+          {
+            echo "## Release ${{ steps.version.outputs.branch }}"
+            echo ""
+            echo "- 🔨 [Watch the build](https://dev.azure.com/<ORG>/<PROJECT>/_build?definitionId=<BUILD_DEF_ID>&branchName=refs/heads/${{ steps.version.outputs.branch }})"
+            echo "- 🚀 Once the build finishes, the deployment release is auto-created here: [Releases](https://dev.azure.com/<ORG>/<PROJECT>/_release?definitionId=<RELEASE_DEF_ID>&view=mine&_a=releases)"
+          } >> "$GITHUB_STEP_SUMMARY"
