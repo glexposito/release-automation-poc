@@ -33,7 +33,13 @@ jobs:
           echo "branch=release/${major}.${next_minor}.0" >> "$GITHUB_OUTPUT"
 
       - name: Create release branch
-        run: git push origin HEAD:refs/heads/${{ steps.version.outputs.branch }}
+        run: |
+          branch="${{ steps.version.outputs.branch }}"
+          if git ls-remote --exit-code --heads origin "refs/heads/${branch}" >/dev/null; then
+            echo "::error::${branch} already exists on origin. Refusing to overwrite an existing release branch."
+            exit 1
+          fi
+          git push origin HEAD:refs/heads/"${branch}"
 
       - name: Post ADO links
         run: |
