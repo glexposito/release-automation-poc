@@ -1,9 +1,9 @@
-name: Sync minor from master
+name: Sync minor from main
 
 on:
   push:
     branches:
-      - master
+      - main
 
   workflow_dispatch:
 
@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-26.04
 
     steps:
-      - name: Checkout master
+      - name: Checkout main
         uses: actions/checkout@v6
         with:
-          ref: master
+          ref: main
           fetch-depth: 0
 
-      - name: Reset minor to master
+      - name: Reset minor to main
         run: git push origin HEAD:refs/heads/minor --force
