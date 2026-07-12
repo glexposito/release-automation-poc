@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   sync-minor:
+    name: Sync minor
     runs-on: ubuntu-26.04
 
     steps:

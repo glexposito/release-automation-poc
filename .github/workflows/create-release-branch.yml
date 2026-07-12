@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   create-release-branch:
+    name: Create release branch
     runs-on: ubuntu-26.04
 
     steps:
